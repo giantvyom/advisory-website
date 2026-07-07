@@ -1,1 +1,55 @@
-<!DOCTYPE html><html><head><title>Contact</title><link rel="stylesheet" href="css/style.css"></head><body><header><a href="index.html">← Home</a></header><section class="section"><h1>Contact</h1><p>Content placeholder for Contact.</p></section></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact | Guidory - Secure Advisory Intake</title>
+    <meta name="description" content="Initiate a private engagement with Guidory's international partner network.">
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header class="site-header">
+        <div class="container header-container">
+            <a href="index.html" class="logo-container"><img src="assets/logo.svg" alt="Guidory Logo" class="brand-logo"></a>
+            <nav class="primary-navigation"><ul class="nav-list"><li><a href="index.html" class="nav-link">Home</a></li><li><a href="about.html" class="nav-link">About</a></li><li><a href="services.html" class="nav-link">Services</a></li><li><a href="industries.html" class="nav-link">Industries</a></li><li><a href="insights.html" class="nav-link">Insights</a></li><li><a href="contact.html" class="nav-link">Contact</a></li></ul></nav>
+        </div>
+    </header>
+    <main id="main">
+        <section class="section cta-section">
+            <div class="container">
+                <div class="cta-grid">
+                    <div>
+                        <span class="section-eyebrow text-gold">Engage Guidory</span>
+                        <h1 class="section-title text-white">Initiate a Strategic Consultation</h1>
+                        <p class="text-light-grey" style="margin-top:24px;">Connect directly with our senior partners to review your digital transformation delivery posture, analyze GCC operational optimization, or remediate active project delivery slippage.</p>
+                    </div>
+                    <div class="contact-form-container">
+                        <form class="contact-form">
+                            <div class="form-group"><label for="name">Full Name</label><input type="text" id="name" name="name" required autocomplete="name"></div>
+                            <div class="form-row">
+                                <div class="form-group"><label for="email">Corporate Email</label><input type="email" id="email" name="email" required autocomplete="email"></div>
+                                <div class="form-group"><label for="company">Organization</label><input type="text" id="company" name="company" required></div>
+                            </div>
+                            <div class="form-group">
+                                <label for="role">Your Executive Role</label>
+                                <select id="role" name="role" required>
+                                    <option value="" disabled selected hidden></option>
+                                    <option value="ceo">CEO / Board Director</option>
+                                    <option value="cio">CIO / CTO</option>
+                                    <option value="gcc">GCC Managing Executive</option>
+                                </select>
+                            </div>
+                            <div class="form-group"><label for="message">Objective of Inquiry</label><textarea id="message" name="message" rows="3" required></textarea></div>
+                            <button type="submit" class="btn btn-primary">Request Briefing</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer class="site-footer"><div class="container footer-container"><div><span class="footer-logo">GUIDORY</span></div><p class="copyright">&copy; 2026 Guidory. All rights reserved.</p></div></footer>
+    <script src="js/main.js"></script>
+</body>
+</html>
