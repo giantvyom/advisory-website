@@ -1,0 +1,742 @@
+/* ==========================================================================
+   1. Design System & Custom Tokens (Premium Luxury Matrix)
+   ========================================================================== */
+:root {
+    --color-navy-dark: #07111E;
+    --color-navy-mid: #0C1A2E;
+    --color-gold: #E2C974;
+    --color-gold-muted: #C8A45D;
+    --color-white: #FFFFFF;
+    --color-text-pure: #FFFFFF;
+    --color-text-body: #A2B4C7;
+    --color-text-dim: #637B94;
+    
+    --font-serif: 'Playfair Display', Georgia, serif;
+    --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+    
+    --max-width: 1300px;
+    --header-height: 100px;
+    --transition-editorial: cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* ==========================================================================
+   2. Base Structural Resets
+   ========================================================================== */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: var(--header-height);
+    background-color: var(--color-navy-dark);
+    color: var(--color-text-body);
+    font-family: var(--font-sans);
+    font-size: 16px;
+    line-height: 1.75;
+    -webkit-font-smoothing: antialiased;
+}
+
+body {
+    overflow-x: hidden;
+    background-color: var(--color-navy-dark);
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+    transition: all 0.4s var(--transition-editorial);
+}
+
+ul {
+    list-style: none;
+}
+
+.skip-link {
+    position: absolute;
+    top: -100px;
+    left: 40px;
+    background: var(--color-gold);
+    color: var(--color-navy-dark);
+    padding: 12px 24px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    z-index: 9999;
+    transition: top 0.2s ease;
+}
+.skip-link:focus { top: 24px; }
+
+/* ==========================================================================
+   3. Common Reusable Layout Elements
+   ========================================================================== */
+.container {
+    width: 100%;
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 64px;
+}
+
+@media (max-width: 768px) {
+    .container { padding: 0 24px; }
+}
+
+.section {
+    padding: 160px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+@media (max-width: 768px) {
+    .section { padding: 100px 0; }
+}
+
+.bg-light { background-color: var(--color-navy-mid); }
+.text-serif { font-family: var(--font-serif); }
+.text-italic { font-style: italic; }
+.text-white { color: var(--color-white); }
+.text-gold { color: var(--color-gold); }
+
+.section-grid {
+    display: grid;
+    grid-template-columns: 5fr 7fr;
+    gap: 96px;
+}
+
+@media (max-width: 992px) {
+    .section-grid { grid-template-columns: 1fr; gap: 40px; }
+}
+
+.section-eyebrow {
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.3em;
+    color: var(--color-gold);
+    margin-bottom: 28px;
+}
+
+.section-title {
+    font-family: var(--font-serif);
+    font-size: 3.25rem;
+    font-weight: 400;
+    line-height: 1.2;
+    color: var(--color-white);
+    letter-spacing: -0.01em;
+}
+
+@media (max-width: 768px) {
+    .section-title { font-size: 2.25rem; }
+}
+
+/* Typography & Layout Accents */
+.lead-text {
+    font-size: 1.375rem;
+    font-weight: 300;
+    line-height: 1.7;
+    color: var(--color-white);
+    margin-bottom: 32px;
+}
+
+.section-content-block p {
+    margin-bottom: 24px;
+    font-size: 1rem;
+}
+.section-content-block p:last-child { margin-bottom: 0; }
+
+/* Precise Action Interfaces */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    padding: 20px 44px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    cursor: pointer;
+    border: 1px solid transparent;
+    transition: all 0.4s var(--transition-editorial);
+}
+
+.btn-primary {
+    background-color: var(--color-gold);
+    color: var(--color-navy-dark);
+}
+.btn-primary:hover {
+    background-color: var(--color-white);
+    color: var(--color-navy-dark);
+}
+
+.btn-secondary {
+    background-color: transparent;
+    color: var(--color-white);
+    border-color: rgba(255, 255, 255, 0.1);
+}
+.btn-secondary:hover {
+    border-color: var(--color-white);
+}
+
+.btn-sm {
+    padding: 12px 24px;
+    font-size: 0.6875rem;
+    letter-spacing: 0.15em;
+}
+
+/* ==========================================================================
+   4. Shell Architecture (Header & Navigation)
+   ========================================================================== */
+.site-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: var(--header-height);
+    background-color: rgba(7, 17, 30, 0.85);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    z-index: 1000;
+}
+
+.header-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+.brand-logo {
+    height: 52px;
+    width: auto;
+}
+
+.nav-list {
+    display: flex;
+    align-items: center;
+    gap: 48px;
+}
+
+.nav-link {
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    color: var(--color-text-body);
+    padding: 8px 0;
+    position: relative;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background-color: var(--color-gold);
+    transition: width 0.4s var(--transition-editorial);
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+    width: 100%;
+}
+
+.nav-link:hover,
+.nav-link.active {
+    color: var(--color-gold);
+}
+
+.mobile-nav-toggle { display: none; }
+
+@media (max-width: 992px) {
+    .mobile-nav-toggle {
+        display: block;
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 8px;
+        z-index: 1100;
+    }
+    .hamburger {
+        display: block;
+        width: 20px;
+        height: 1px;
+        background-color: var(--color-white);
+        position: relative;
+    }
+    .hamburger::before, .hamburger::after {
+        content: '';
+        position: absolute;
+        width: 20px;
+        height: 1px;
+        background-color: var(--color-white);
+        left: 0;
+        transition: transform 0.3s var(--transition-editorial), top 0.3s var(--transition-editorial);
+    }
+    .hamburger::before { top: -6px; }
+    .hamburger::after { top: 6px; }
+
+    .primary-navigation {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 100%;
+        max-width: 360px;
+        height: 100vh;
+        background-color: var(--color-navy-mid);
+        padding: 140px 48px 48px 48px;
+        box-shadow: -20px 0 60px rgba(0,0,0,0.2);
+        transition: right 0.5s var(--transition-editorial);
+    }
+    .primary-navigation.open { right: 0; }
+    .nav-list { flex-direction: column; align-items: flex-start; gap: 32px; }
+    .nav-link { font-size: 1rem; text-transform: none; letter-spacing: 0; }
+    .nav-cta-item { width: 100%; margin-top: 16px; }
+    
+    .mobile-nav-toggle[aria-expanded="true"] .hamburger { background-color: transparent; }
+    .mobile-nav-toggle[aria-expanded="true"] .hamburger::before { top: 0; transform: rotate(45deg); }
+    .mobile-nav-toggle[aria-expanded="true"] .hamburger::after { top: 0; transform: rotate(-45deg); }
+}
+
+/* ==========================================================================
+   5. Hero Display Contexts
+   ========================================================================== */
+.hero-section {
+    padding-top: calc(var(--header-height) + 120px);
+    padding-bottom: 180px;
+    min-height: 85vh;
+    display: flex;
+    align-items: center;
+}
+
+.hero-content { max-width: 960px; }
+
+.hero-title {
+    font-family: var(--font-sans);
+    font-weight: 300;
+    font-size: 5.5rem;
+    line-height: 1.1;
+    color: var(--color-white);
+    letter-spacing: -0.03em;
+    margin-bottom: 48px;
+}
+
+@media (max-width: 768px) {
+    .hero-title { font-size: 3.25rem; }
+}
+
+.hero-subheading {
+    font-size: 1.4rem;
+    font-weight: 300;
+    line-height: 1.75;
+    color: var(--color-text-body);
+    margin-bottom: 64px;
+    max-width: 760px;
+}
+
+.hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    align-items: center;
+}
+
+/* ==========================================================================
+   6. Custom Performance Metrics Component
+   ========================================================================== */
+.metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 48px;
+    margin-top: 120px;
+    padding-top: 80px;
+    border-top: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+@media (max-width: 992px) {
+    .metrics-grid { grid-template-columns: repeat(2, 1fr); gap: 48px 32px; }
+}
+@media (max-width: 480px) {
+    .metrics-grid { grid-template-columns: 1fr; }
+}
+
+.metric-card { display: flex; flex-direction: column; }
+
+.metric-value {
+    font-family: var(--font-serif);
+    font-size: 4rem;
+    font-weight: 400;
+    color: var(--color-white);
+    line-height: 1.1;
+    margin-bottom: 16px;
+}
+
+.metric-label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--color-text-dim);
+    font-weight: 600;
+}
+
+/* ==========================================================================
+   7. Asymmetric Services & Capability Grid Architecture
+   ========================================================================== */
+.section-intro {
+    margin-bottom: 80px;
+    max-width: 720px;
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 48px;
+}
+
+@media (max-width: 992px) {
+    .services-grid { display: flex; flex-direction: column; gap: 32px; }
+}
+
+.service-card {
+    grid-column: span 4;
+    background: rgba(255, 255, 255, 0.01);
+    border: 1px solid rgba(255, 255, 255, 0.03);
+    padding: 56px 40px;
+    transition: all 0.5s var(--transition-editorial);
+}
+
+/* McKinsey Strategic Visual Variance Formula */
+.service-card:nth-child(3n+1) { grid-column: span 5; }
+.service-card:nth-child(3n+2) { grid-column: span 7; }
+.service-card:nth-child(3n+3) { 
+    grid-column: span 12; 
+    display: grid; 
+    grid-template-columns: 1fr 2fr; 
+    gap: 40px; 
+    align-items: center; 
+}
+
+@media (max-width: 992px) {
+    .service-card:nth-child(3n+1),
+    .service-card:nth-child(3n+2),
+    .service-card:nth-child(3n+3) {
+        display: block;
+        padding: 40px 28px;
+    }
+}
+
+.service-card:hover {
+    background: rgba(255, 255, 255, 0.02);
+    border-color: var(--color-gold-muted);
+    transform: translateY(-4px);
+}
+
+.service-number {
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--color-gold);
+    letter-spacing: 0.1em;
+    margin-bottom: 32px;
+}
+
+.service-title {
+    font-family: var(--font-serif);
+    font-size: 1.75rem;
+    font-weight: 400;
+    color: var(--color-white);
+    margin-bottom: 20px;
+}
+
+.service-description {
+    font-size: 0.975rem;
+    color: var(--color-text-body);
+    line-height: 1.7;
+}
+
+/* ==========================================================================
+   8. Industries Matrix Component
+   ========================================================================== */
+.section-desc-aside {
+    margin-top: 24px;
+    color: var(--color-text-body);
+    font-size: 1rem;
+    max-width: 300px;
+}
+
+.industry-list li {
+    padding: 48px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+}
+.industry-list li:first-child { padding-top: 0; }
+.industry-list li:last-child { border-bottom: none; padding-bottom: 0; }
+
+.industry-item-title {
+    font-family: var(--font-serif);
+    font-size: 1.75rem;
+    font-weight: 400;
+    color: var(--color-white);
+    margin-bottom: 16px;
+}
+
+.industry-list p {
+    color: var(--color-text-body);
+    font-size: 0.975rem;
+    max-width: 640px;
+}
+
+/* ==========================================================================
+   9. Editorial Insight Structures
+   ========================================================================== */
+.insights-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 80px;
+}
+
+.text-link {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    font-weight: 600;
+    color: var(--color-white);
+    display: inline-flex;
+    align-items: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    padding-bottom: 6px;
+}
+.text-link:hover {
+    color: var(--color-gold);
+    border-bottom-color: var(--color-gold);
+}
+
+.insights-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 48px;
+}
+
+@media (max-width: 992px) {
+    .insights-grid { grid-template-columns: 1fr; gap: 56px; }
+}
+
+.insight-card { display: flex; flex-direction: column; }
+
+.insight-meta {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--color-gold);
+    margin-bottom: 24px;
+}
+
+.insight-title {
+    font-family: var(--font-serif);
+    font-size: 1.5rem;
+    font-weight: 400;
+    line-height: 1.35;
+    color: var(--color-white);
+    margin-bottom: 20px;
+}
+.insight-title a:hover { color: var(--color-gold); }
+
+.insight-excerpt {
+    font-size: 0.975rem;
+    color: var(--color-text-body);
+    margin-bottom: 28px;
+    flex-grow: 1;
+}
+
+.insight-read-time {
+    font-size: 0.75rem;
+    color: var(--color-text-dim);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+/* ==========================================================================
+   10. Custom Accessible Form Control (Frictionless Executive Intake)
+   ========================================================================== */
+.cta-section {
+    background-color: var(--color-navy-mid);
+    border-bottom: none;
+    padding: 180px 0;
+}
+
+.cta-grid {
+    display: grid;
+    grid-template-columns: 5fr 6fr;
+    gap: 120px;
+    align-items: flex-start;
+}
+
+@media (max-width: 992px) {
+    .cta-grid { grid-template-columns: 1fr; gap: 80px; }
+}
+
+.contact-details {
+    margin-top: 56px;
+    padding-top: 48px;
+    border-top: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.contact-line {
+    font-size: 0.9375rem;
+    color: var(--color-white);
+    margin-bottom: 20px;
+}
+
+.label-dim {
+    color: var(--color-text-dim);
+    margin-right: 12px;
+}
+
+.contact-form-container {
+    background: rgba(255, 255, 255, 0.01);
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    padding: 64px;
+}
+
+@media (max-width: 640px) {
+    .contact-form-container { padding: 32px 24px; }
+}
+
+.contact-form .form-group {
+    margin-bottom: 32px;
+}
+
+.contact-form .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+}
+
+@media (max-width: 640px) {
+    .contact-form .form-row { grid-template-columns: 1fr; gap: 0; }
+}
+
+.contact-form label {
+    display: block;
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--color-gold-muted);
+    margin-bottom: 16px;
+}
+
+.contact-form input[type="text"],
+.contact-form input[type="email"],
+.contact-form select,
+.contact-form textarea {
+    width: 100%;
+    padding: 18px 20px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    font-family: var(--font-sans);
+    font-size: 0.95rem;
+    color: var(--color-white);
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 0;
+    outline: none;
+    transition: all 0.4s var(--transition-editorial);
+}
+
+.contact-form input:focus,
+.contact-form select:focus,
+.contact-form textarea:focus {
+    border-color: var(--color-gold);
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.contact-form select {
+    appearance: none;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6' fill='none'><path d='M1 1L5 5L9 1' stroke='white' stroke-opacity='0.6' stroke-width='1' stroke-linecap='round' stroke-linejoin='round'/></svg>");
+    background-repeat: no-repeat;
+    background-position: right 20px center;
+}
+
+.contact-form option {
+    background-color: var(--color-navy-mid);
+    color: var(--color-white);
+}
+
+.contact-form .btn-primary {
+    margin-top: 16px;
+    width: 100%;
+}
+
+/* ==========================================================================
+   11. Footer Shell Components
+   ========================================================================== */
+.site-footer {
+    background-color: #040B14;
+    padding: 96px 0;
+    color: var(--color-text-dim);
+    border-top: 1px solid rgba(255, 255, 255, 0.02);
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+@media (max-width: 768px) {
+    .footer-container { flex-direction: column; align-items: flex-start; gap: 48px; }
+}
+
+.footer-logo {
+    font-family: var(--font-sans);
+    font-weight: 500;
+    font-size: 1.125rem;
+    letter-spacing: 0.25em;
+    color: var(--color-white);
+    display: block;
+    margin-bottom: 12px;
+}
+
+.footer-tagline {
+    font-size: 0.8125rem;
+    color: var(--color-text-dim);
+}
+
+.footer-meta {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+@media (max-width: 768px) {
+    .footer-meta { align-items: flex-start; }
+}
+
+.footer-links {
+    display: flex;
+    gap: 40px;
+    margin-bottom: 20px;
+}
+
+.footer-link {
+    font-size: 0.8125rem;
+    letter-spacing: 0.05em;
+    color: var(--color-text-body);
+}
+.footer-link:hover { color: var(--color-gold); }
+
+.copyright {
+    font-size: 0.75rem;
+    color: rgba(162, 180, 199, 0.3);
+}
